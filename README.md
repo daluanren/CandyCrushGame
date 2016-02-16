@@ -18,4 +18,22 @@
 * 游戏界面
 * 游戏配置界面（后期制作配套）
 
+### 功能逻辑 ###
+1. 生成新的Candy，并创建Candy类；
+2. 按行列随机生成多个Candy；
+3. Candy间的互换；
+4. ...（后期继续补充）
+
 ### 代码结构： ###
+<table border="1">
+	<tr>
+		<td>类名</td>
+		<td>功能</td>
+		<td>备注</td>
+	</tr>
+	<tr>
+		<td>GameController</td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
