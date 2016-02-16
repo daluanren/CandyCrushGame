@@ -21,8 +21,9 @@
 ### 功能逻辑 ###
 1. 生成新的Candy，并创建Candy类；
 2. 按行列随机生成多个Candy；
-3. Candy间的互换:使用逻辑二维数组进行互换；
-4. Candy消除算法;
+3. ** Candy间的互换 ** :exchange(Candy c1,Candy c2)，；
+4. ** Candy消除算法 **:在Candy中建立Dispose(),注意消除与GameController之间的联系；
+5. ** Candy补充算法 **:需要建立逻辑二维数组,数组的增减与实际的销毁相对应;
 5. ...（后期继续补充）
 
 ### 代码结构： ###
