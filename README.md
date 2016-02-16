@@ -1,5 +1,5 @@
 # <center>CandyCrush开发文档</center> #
-### <p align="right">WellPoon 2016/2/7</p> ###
+### <p align="right">WellPan 2016/2/10</p> ###
 
 
 
@@ -21,8 +21,9 @@
 ### 功能逻辑 ###
 1. 生成新的Candy，并创建Candy类；
 2. 按行列随机生成多个Candy；
-3. Candy间的互换；
-4. ...（后期继续补充）
+3. Candy间的互换:使用逻辑二维数组进行互换；
+4. Candy消除算法;
+5. ...（后期继续补充）
 
 ### 代码结构： ###
 <table border="1">
@@ -32,8 +33,15 @@
 		<td>备注</td>
 	</tr>
 	<tr>
-		<td>GameController</td>
+		<td>Candy</td>
+		<td>配置Candy的属性，包括行列索引，Candy的类型;功能：更新Candy坐标</td>
 		<td></td>
+	</tr>
+	<tr>
+		<td>GameController</td>
+		<td>
+			游戏流程和功能控制，主要包括：确定行列数、生成Candy、...（后期补充）
+		</td>
 		<td></td>
 	</tr>
 </table>

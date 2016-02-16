@@ -1,0 +1,203 @@
+﻿{
+	"wenti01":
+	[
+	  {
+		"stepName":"填方",
+		"question": "K55+160~K55+220是什么路基( )。",
+		"select": "填方,挖方,半填半挖,路堑",
+		"answer":"填方",
+		"startModels":"arrow_0,yld_dimian,yld_01,yld_02",
+		"endModels":"yld_dimian,yld_01,yld_B,yld_B1,yld_A"
+	  },
+	  {
+		"stepName":"边沟",
+		"question": "为汇集和排除路面、路肩及边坡的流水，在路基两侧设置的水沟称为（）。",
+		"select": "边沟,截水沟,急流槽,排水沟",
+		"answer":"边沟",
+		"startModels":"arrow_1,yld_dimian,yld_01,yld_B,yld_B1,yld_A",
+		"endModels":"yld_dimian,yld_01,yld_B,yld_B1"
+	  },
+	  {
+		"stepName":"圆管涵",
+		"question": "K55+160处设置有（）。",
+		"select": "圆管涵,桥梁,桥涵,盲沟",
+		"answer":"圆管涵",
+		"startModels":"arrow_2,yld_dimian,yld_01,yld_B,yld_B1",
+		"endModels":"yld_dimian,yld_01,yld_B,yld_B1,yuanguanhan"
+	  },
+	  {
+		"stepName":"横向出水管",
+		"question": "将集水井的水输送至路基表面指定地点的管道成为（）。",
+		"select": "横向出水管,横向进水管,中央隔离带,排水沟",
+		"answer":"横向出水管",
+		"startModels":"arrow_3,yld_dimian,yld_01,yld_B,yld_B1,yuanguanhan",
+		"endModels":"yld_dimian,yld_01,yld_B,yld_B1,yuanguanhan,hengxiangpaishuiguan"
+	  },
+	  {
+		"stepName":"水泥混凝土",
+		"question": "一般填方路段，最上层水泥混凝土的厚度为（）。",
+		"select": "26cm,8cm,15cm,18cm",
+		"answer":"26cm",
+		"startModels":"arrow_4,yld_dimian,yld_01,yld_B,yld_B1,yuanguanhan,hengxiangpaishuiguan",
+		"endModels":"yld_dimian,yuanguanhan,yld_lumian,hengxiangpaishuiguan01"
+	  },
+	  {
+		"stepName":"边坡",
+		"question": "K55+160~K55+220边坡坡度均为（）。",
+		"select": "1:1.50,1:1.05,1:2,1:1.25",
+		"answer":"1:1.50",
+		"startModels":"arrow_5,yld_dimian,yuanguanhan,yld_lumian,hengxiangpaishuiguan01",
+		"endModels":"yld_dimian,hengxiangpaishuiguan01,yuanguanhan,yld_C"
+	  }
+	],
+
+	"wenti02":
+	[
+	  {
+		"stepName":"半填半挖",
+		"question": "K55+340处是什么路基()。",
+		"select": "填方,挖方,半填半挖,路堑",
+		"answer":"半填半挖",
+		"startModels":"arrow_0,DiXing,yld_A1_01,yld_A1_02",
+		"endModels":"DiXing,yld_A1_01,yld_A1_03,yld_A1_4,yld_A1,yld_B2,yld_A1_2"
+	  },
+	  {
+		"stepName":"渗沟",
+		"question": "采用渗透方式将地下水汇集于沟内，并通过沟底通道将水排至指定地点，此种地下排水设施统称为（）。",
+		"select": "暗沟,渗沟,排水沟,边沟",
+		"answer":"渗沟",
+		"startModels":"arrow_1,DiXing,yld_A1_01,yld_A1_03,yld_A1_4,yld_A1,yld_B2,yld_A1_2",
+		"endModels":"DiXing,yld_A1_2,yld_A1_01,yld_A1_03,yld_A1,yld_B2,shenggou"
+	  },
+	  {
+		"stepName":"台阶",
+		"question": "挖台阶施工中，填方高度超过8m时，台阶坡度需向内（）。",
+		"select": "2~4%,4~6%,6~8%,8~10%",
+		"answer":"2~4%",
+		"startModels":"arrow_2,DiXing,yld_A1_2,yld_A1_01,yld_A1_03,yld_A1,yld_B2,shenggou",
+		"endModels":"DiXing,yld_A1_01,yld_A1_03,yld_A1,yld_B2,shenggou,taijie"
+	  },
+	  {
+		"stepName":"急流槽",
+		"question": "在陡坡或深沟地段设置的坡度较陡、水流不离开槽底的沟槽成为（）。",
+		"select": "边沟,截水沟,急流槽,排水沟",
+		"answer":"急流槽",
+		"startModels":"arrow_3,DiXing,yld_A1_01,yld_A1_03,yld_A1,yld_B2,shenggou,taijie",
+		"endModels":"DiXing,yld_C1,yld_A1_5"
+	  },
+	  {
+		"stepName":"硬路肩",
+		"question": "K55+300--K55+480路段，硬路肩宽为（）。",
+		"select": "250,75,200,160",
+		"answer":"250",
+		"startModels":"arrow_4,DiXing,yld_C1,yld_A1_5",
+		"endModels":"DiXing,yld_C1,jiliuchao"
+	  },
+	  {
+		"stepName":"边坡",
+		"question": "K55+400处，较高一边的边坡坡顶标高为（）.",
+		"select": "126.56,18.7,115.59,1",
+		"answer":"126.56",
+		"startModels":"arrow_5,DiXing,yld_C1,jiliuchao",
+		"endModels":"DiXing,jiliuchao,yld_C2"
+	  }
+	],
+
+	"wenti03":
+	[
+	  {
+		"stepName":"填方",
+		"question": "K55+760-K55+815是什么路段（）。",
+		"select": "填方,挖方,半填半挖,路堑",
+		"answer":"填方",
+		"startModels":"arrow_0,dimian,yld_01,yld_04",
+		"endModels":"dimian,yld_A2,yld_04"
+	  },
+	  {
+		"stepName":"路堤挡土墙",
+		"question": "（）用于沿河路堤，需要收缩坡脚或防止水流冲刷。",
+		"select": "路堑挡土墙,路堤挡土墙,路肩挡土墙,山坡挡土墙",
+		"answer":"路堤挡土墙",
+		"startModels":"arrow_1,dimian,yld_A2,yld_04",
+		"endModels":"dimian,yld_A2,yld_04,ludidangtuqiang"
+	  },
+	  {
+		"stepName":"路肩挡土墙",
+		"question": "（）用于坡度路堤，为保证路堤稳定，收缩坡脚；为避免与其他建筑物干扰或防止多占农田；为防止沿河路堤受水流冲刷和淘刷。",
+		"select": "路堑挡土墙,路堤挡土墙,路肩挡土墙,山坡挡土墙",
+		"answer":"路肩挡土墙",
+		"startModels":"arrow_2,dimian,yld_A2,yld_04,ludidangtuqiang",
+		"endModels":"dimian,yld_A2,yld_04,lujiandangtuqiang,ludidangtuqiang"
+	  },
+	  {
+		"stepName":"行车道",
+		"question": "K55+600-K55+850路段，单个行车道宽为（）。",
+		"select": "375,160,250,200",
+		"answer":"375",
+		"startModels":"arrow_3,dimian,yld_A2,yld_04,lujiandangtuqiang,ludidangtuqiang",
+		"endModels":"dimian,yld_B2,ludidangtuqiang,lujiandangtuqiang"
+	  },
+	  {
+		"stepName":"中央分隔带",
+		"question": "中央分隔带的宽度为( )。",
+		"select": "100,150,200,250",
+		"answer":"200",
+		"startModels":"arrow_4,dimian,yld_B2,ludidangtuqiang,lujiandangtuqiang",
+		"endModels":"dimian,ludidangtuqiang,lujiandangtuqiang,yld_B3"
+	  }
+	],
+	
+	"wenti04":
+	[
+	  {
+		"stepName":"挖方",
+		"question": "K55+985~K56+020是什么路段（）。",
+		"select": "填方,挖方,半填半挖,路堤",
+		"answer":"挖方",
+		"startModels":"arrow_0,DiXing,yld_A3_03,yld_A3_01",
+		"endModels":"DiXing,yld_A3_01,yld_A3_02,yld_A3_A,yld_A3_A_3,yld_A3_A_4"
+	  },
+	  {
+		"stepName":"集水井",
+		"question": "该路段集水井内宽为（）cm。",
+		"select": "10,20,30,40",
+		"answer":"20",
+		"startModels":"arrow_1,DiXing,yld_A3_01,yld_A3_02,yld_A3_A,yld_A3_A_3,yld_A3_A_4",
+		"endModels":"DiXing,yld_A3_01,yld_A3_02,yld_A3_A,yld_A3_A_3,JInshuijin_4"
+	  },
+	  {
+		"stepName":"暗沟",
+		"question": "该路段暗沟内宽为（）cm。",
+		"select": "10,20,30,40",
+		"answer":"20",
+		"startModels":"arrow_2,DiXing,yld_A3_01,yld_A3_02,yld_A3_A,yld_A3_A_3,JInshuijin_4",
+		"endModels":"DiXing,yld_A3_01,yld_A3_02,yld_A3_A_3,JInshuijin_4,angou,yld_A3_A"
+	  },
+	  {
+		"stepName":"横向出水管",
+		"question": "该路段横向出水管外径为（）cm。",
+		"select": "10,20,30,40",
+		"answer":"20",
+		"startModels":"arrow_3,DiXing,yld_A3_01,yld_A3_02,yld_A3_A_3,JInshuijin_4,angou,yld_A3_A",
+		"endModels":"DiXing,yld_A3_A,yld_A3_01,yld_A3_02,JInshuijin_4,angou,guanzhi"
+	  },
+	  {
+		"stepName":"土路肩",
+		"question": "K55+850—K56+100路段，土路肩宽为（）。",
+		"select": "75,85,95,100",
+		"answer":"75",
+		"startModels":"arrow_4,DiXing,yld_A3_A,yld_A3_01,yld_A3_02,JInshuijin_4,angou,guanzhi",
+		"endModels":"DiXing,yld_A3_C,JInshuijin"
+	  },
+	  {
+		"stepName":"护坡",
+		"question": "浆砌片石拱形骨架内草皮护坡不适用的土质是（）。",
+		"select": "一般土质,膨胀土,细砂、粉砂,红土",
+		"answer":"细砂、粉砂",
+		"startModels":"arrow_5,DiXing,yld_A3_C,JInshuijin",
+		"endModels":"DiXing,yld_A3_C1,JInshuijin,fanghu,langan"
+	  }
+	]	
+}
+		
+
