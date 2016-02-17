@@ -33,23 +33,33 @@ public class GameController : MonoBehaviour
             ArrayList  tmpArr = new ArrayList();
             for (int columnIndex = 0; columnIndex < columnNum; columnIndex++)
             {
-                Object obj = Instantiate(candy);
-                Candy theCandy = obj as Candy;
-
-                //Set the candy position
-                theCandy.transform.parent = panel_candys.transform;
-                theCandy.transform.localScale = Vector3.one;
-                theCandy.columnIndex = columnIndex;
-                theCandy.rowIndex = rowIndex;
-                theCandy.UpdatePosition();
-
-                theCandy.gameController = this;
+                Candy theCandy = AddCandy(rowIndex, columnIndex);
 
                 tmpArr.Add(theCandy);
             }
             candyArr.Add(tmpArr);
         }
 
+    }
+
+    /// <summary>
+    /// 创建Candy
+    /// </summary>
+    private Candy AddCandy(int rowIndex, int columnIndex)
+    {
+        Object obj = Instantiate(candy);
+        Candy theCandy = obj as Candy;
+
+        //Set the candy position
+        theCandy.transform.parent = panel_candys.transform;
+        theCandy.transform.localScale = Vector3.one;
+        theCandy.columnIndex = columnIndex;
+        theCandy.rowIndex = rowIndex;
+        theCandy.UpdatePosition();
+
+        theCandy.gameController = this;
+
+        return theCandy;
     }
 
     /// <summary>
@@ -118,16 +128,23 @@ public class GameController : MonoBehaviour
     //移除Candy
     private void Remove(Candy c)
     {
+        //remove candy
         c.Dispose();
 
+        //candy move down
         int columnIndex = c.columnIndex;
         for (int rowIndex = c.rowIndex + 1; rowIndex < rowNum; rowIndex++)
         {
             Candy c2 = GetCandy(rowIndex, columnIndex);
             c2.rowIndex--;
-            c2.UpdatePosition();
+            c2.TweenPosition();
             SetCandy(rowIndex - 1, columnIndex, c2);
         }
+
+        //Add new candy
+        Candy newCandy = AddCandy(rowNum - 1, columnIndex);
+        newCandy.UpdatePosition();
+        SetCandy(rowNum - 1, columnIndex,newCandy);
     }
        //=================================================================================================
     public string LoadJsonData(string fileName, string firstIndexName, int strNo, string keyName)

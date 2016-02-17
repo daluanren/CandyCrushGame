@@ -61,6 +61,22 @@ public class Candy : MonoBehaviour
     }
 
     /// <summary>
+    /// 缓动更新 Candy位置
+    /// </summary>
+    public void TweenPosition()
+    {
+        SetRangeBg();
+
+        iTween.MoveTo(this.gameObject, iTween.Hash
+            (
+                "x", basePos * (columnIndex + xOff),
+                "y", basePos * (rowIndex + yOff),
+                "time", 0.5f
+            )
+            );
+    }
+
+    /// <summary>
     /// 销毁
     /// </summary>
     public void Dispose()
