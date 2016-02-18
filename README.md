@@ -24,7 +24,8 @@
 3. ** Candy间的互换 ** :exchange(Candy c1,Candy c2)，；
 4. ** Candy消除算法 **:在Candy中建立Dispose(),注意消除与GameController之间的联系；
 5. ** Candy补充算法 **:需要建立逻辑二维数组,数组的增减与实际的销毁相对应;
-6. Candy缓动功能：
+6. Candy缓动功能：使用itween.Moveto实现；
+7. 消除Candy
 5. ...（后期继续补充）
 
 ### 代码结构： ###
@@ -47,3 +48,16 @@
 		<td></td>
 	</tr>
 </table>
+
+### 问题记录： ###
+1. 使用插件itween，使Cany的移动能够有缓冲。
+
+`
+itween.Moveto(thisCandy,itween.Hash("x",columnIndex,"y",rowIndxe,"time",0.5f));		
+`
+使用该方法更新Candy位置后，发现Candy偏移到屏幕外。解决方案：应该针对Candy的LocalPosition进行位移：
+
+`
+itween.Moveto(thisCandy,itween.Hash("x",columnIndex,"y",rowIndxe,"time",0.5f,
+**"islocal",true**));
+`

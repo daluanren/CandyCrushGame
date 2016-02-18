@@ -63,15 +63,19 @@ public class Candy : MonoBehaviour
     /// <summary>
     /// 缓动更新 Candy位置
     /// </summary>
-    public void TweenPosition()
+    public void TweenPosition(float followSpeed)
     {
         SetRangeBg();
 
+        //Debug.Log("row:" + rowIndex + ",,,column" + columnIndex);
+        //Debug.Log("x:" + basePos * (columnIndex + xOff));
+        //Debug.Log("y:" + basePos * (rowIndex + yOff));
         iTween.MoveTo(this.gameObject, iTween.Hash
             (
                 "x", basePos * (columnIndex + xOff),
                 "y", basePos * (rowIndex + yOff),
-                "time", 0.5f
+                "time", followSpeed,
+                "islocal",true
             )
             );
     }

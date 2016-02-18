@@ -11,10 +11,11 @@ using System.IO;
 public class GameController : MonoBehaviour
 {
     //
-    public int rowNum;                 
-    public int columnNum;   
+    public int rowNum;
+    public int columnNum;
     public Candy candy;
     public Transform panel_candys;
+    public float followSpeed = 0.5f;
 
     private ArrayList candyArr; //存放CandyArray的数组，二维数组
 
@@ -30,7 +31,7 @@ public class GameController : MonoBehaviour
 
         for (int rowIndex = 0; rowIndex < rowNum; rowIndex++)
         {
-            ArrayList  tmpArr = new ArrayList();
+            ArrayList tmpArr = new ArrayList();
             for (int columnIndex = 0; columnIndex < columnNum; columnIndex++)
             {
                 Candy theCandy = AddCandy(rowIndex, columnIndex);
@@ -82,7 +83,7 @@ public class GameController : MonoBehaviour
     /// <param name="rowIndex"></param>
     /// <param name="columnIndex"></param>
     /// <param name="c"></param>
-    private void SetCandy(int rowIndex, int columnIndex,Candy c)
+    private void SetCandy(int rowIndex, int columnIndex, Candy c)
     {
         ArrayList tmpArr = candyArr[rowIndex] as ArrayList;
         tmpArr[columnIndex] = c;
@@ -95,8 +96,7 @@ public class GameController : MonoBehaviour
     /// <param name="c">第一次选中的Candy</param>
     public void Select(Candy c)
     {
-        //testttttttttt====================================================
-        Remove(c); return;
+        //Remove(c); return;
 
         if (crtCandy == null)
         {
@@ -106,23 +106,35 @@ public class GameController : MonoBehaviour
         {
             Exchange(crtCandy, c);
             crtCandy = null;
+
+            CheckMatches();
+            RemoveMatches();
         }
     }
 
-    //交换Candy
+    /// <summary>
+    /// 交换Candy
+    /// </summary>
+    /// <param name="c1">选择1</param>
+    /// <param name="c2">选择2</param>
     private void Exchange(Candy c1, Candy c2)
     {
-       
+        //Change arrylist
+        SetCandy(c1.rowIndex, c1.columnIndex, c2);
+        SetCandy(c2.rowIndex, c2.columnIndex, c1);
+
         int rowIndex = c1.rowIndex;
         c1.rowIndex = c2.rowIndex;
         c2.rowIndex = rowIndex;
-        
+
         int columnIndex = c1.columnIndex;
         c1.columnIndex = c2.columnIndex;
         c2.columnIndex = columnIndex;
         //Update c1,c2 position
         c1.UpdatePosition();
         c2.UpdatePosition();
+
+
     }
 
     //移除Candy
@@ -137,16 +149,103 @@ public class GameController : MonoBehaviour
         {
             Candy c2 = GetCandy(rowIndex, columnIndex);
             c2.rowIndex--;
-            c2.TweenPosition();
+            c2.TweenPosition(followSpeed);
             SetCandy(rowIndex - 1, columnIndex, c2);
         }
 
         //Add new candy
-        Candy newCandy = AddCandy(rowNum - 1, columnIndex);
+        Candy newCandy = AddCandy(rowNum, columnIndex);
         newCandy.UpdatePosition();
-        SetCandy(rowNum - 1, columnIndex,newCandy);
+        newCandy.rowIndex--;
+        newCandy.TweenPosition(followSpeed);
+        SetCandy(rowNum - 1, columnIndex, newCandy);
     }
-       //=================================================================================================
+
+    /// <summary>
+    /// 检测有无消除
+    /// </summary>
+    /// <returns></returns>
+    private bool CheckMatches()
+    {
+        CheckHorizontalMatches();
+        CheckVerticalMatches();
+        return false;
+    }
+
+    //检测水平方向有无消除
+    private bool CheckHorizontalMatches()
+    {
+        for (int rowIndex = rowNum - 1; rowIndex >= 0; rowIndex--)
+        {
+            for (int columnIndex = 0; columnIndex < columnNum - 2; columnIndex++)
+            {
+                if (GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex, columnIndex + 1).typeName &&
+                    GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex, columnIndex + 2).typeName)
+                {
+                    Debug.Log(rowIndex + " " + columnIndex + " " + columnIndex + 1 + " " + columnIndex + 2);
+                    AddMatches(GetCandy(rowIndex, columnIndex));
+                    AddMatches(GetCandy(rowIndex, columnIndex + 1));
+                    AddMatches(GetCandy(rowIndex, columnIndex + 2));
+                }
+            }
+        }
+
+        return false;
+    }
+
+    //检测垂直方向有无消除
+    private bool CheckVerticalMatches()
+    {
+        for (int columnIndex = columnNum - 1; columnIndex >= 0; columnIndex--)
+        {
+            for (int rowIndex = 0; rowIndex < rowNum; rowIndex++)
+            {
+                if (GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex + 1, columnIndex).typeName &&
+                    GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex + 2, columnIndex).typeName)
+                {
+                    Debug.Log(rowIndex + " " + columnIndex + " " + columnIndex + 1 + " " + columnIndex + 2);
+                    AddMatches(GetCandy(rowIndex, columnIndex));
+                    AddMatches(GetCandy(rowIndex + 1, columnIndex));
+                    AddMatches(GetCandy(rowIndex + 2, columnIndex));
+                }
+            }
+        }
+
+            return false;
+    }
+
+
+    private ArrayList matchCandys;
+    //匹配的Candy
+    private void AddMatches(Candy c)
+    {
+        Debug.Log("rowIndex;" + c.rowIndex + ",columnIndex" + c.columnIndex);
+        if (matchCandys == null) matchCandys = new ArrayList();
+        int i = matchCandys.IndexOf(c);
+        if (i == -1)
+        {
+            matchCandys.Add(c);
+        }
+    }
+
+    private void RemoveMatches()
+    {
+        Candy tmpCandy;
+        if (matchCandys != null)
+        {
+            for (int i = 0; i < matchCandys.Count; i++)
+            {
+                tmpCandy = matchCandys[i] as Candy;
+                Remove(tmpCandy);
+            }
+
+            matchCandys = new ArrayList();
+        }
+
+    }
+
+
+    //=================================================================================================
     public string LoadJsonData(string fileName, string firstIndexName, int strNo, string keyName)
     {
         JsonData json;
