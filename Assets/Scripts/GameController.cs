@@ -71,6 +71,7 @@ public class GameController : MonoBehaviour
     /// <returns></returns>
     private Candy GetCandy(int rowIndex, int columnIndex)
     {
+        //Debug.Log("In the ArryList, rowIndex:" + rowIndex + ",,,columnIndex :" + columnIndex);
         ArrayList tmpArr = candyArr[rowIndex] as ArrayList;
         Candy c = tmpArr[columnIndex] as Candy;
 
@@ -198,7 +199,7 @@ public class GameController : MonoBehaviour
     {
         for (int columnIndex = columnNum - 1; columnIndex >= 0; columnIndex--)
         {
-            for (int rowIndex = 0; rowIndex < rowNum; rowIndex++)
+            for (int rowIndex = 0; rowIndex < rowNum - 2; rowIndex++)
             {
                 if (GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex + 1, columnIndex).typeName &&
                     GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex + 2, columnIndex).typeName)
@@ -210,6 +211,7 @@ public class GameController : MonoBehaviour
                 }
             }
         }
+            
 
             return false;
     }
