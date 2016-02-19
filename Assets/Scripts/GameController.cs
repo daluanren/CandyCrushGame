@@ -105,11 +105,15 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Exchange(crtCandy, c);
-            crtCandy = null;
+            if (Mathf.Abs(crtCandy.rowIndex - c.rowIndex) + Mathf.Abs(crtCandy.columnIndex - c.columnIndex) == 1)
+            {
+                Exchange(crtCandy, c);
 
-            CheckMatches();
-            RemoveMatches();
+                CheckMatches();
+                RemoveMatches();            
+            }
+
+            crtCandy = null;
         }
     }
 
