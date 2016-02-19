@@ -41,6 +41,10 @@ public class GameController : MonoBehaviour
             candyArr.Add(tmpArr);
         }
 
+        //first check
+        if (CheckMatches())
+            RemoveMatches();
+
     }
 
     /// <summary>
@@ -90,11 +94,11 @@ public class GameController : MonoBehaviour
         tmpArr[columnIndex] = c;
     }
 
-    private Candy crtCandy;     //标记Candy
+    private Candy crtCandy = null;     //标记Candy
     /// <summary>
     /// 选择Candy
     /// </summary>
-    /// <param name="c">第一次选中的Candy</param>
+    /// <param name="c">选中的Candy</param>
     public void Select(Candy c)
     {
         //Remove(c); return;
@@ -105,12 +109,12 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            Debug.Log("fist candy position:" + crtCandy.rowIndex + "," + crtCandy.columnIndex + "...second candy position:" + c.rowIndex + "," + c.columnIndex);
             if (Mathf.Abs(crtCandy.rowIndex - c.rowIndex) + Mathf.Abs(crtCandy.columnIndex - c.columnIndex) == 1)
             {
                 Exchange(crtCandy, c);
-
-                CheckMatches();
-                RemoveMatches();            
+                if (CheckMatches())
+                    RemoveMatches();
             }
 
             crtCandy = null;
@@ -172,18 +176,26 @@ public class GameController : MonoBehaviour
     /// <returns></returns>
     private bool CheckMatches()
     {
-        CheckHorizontalMatches();
-        CheckVerticalMatches();
-        return false;
+        bool bolVer = CheckVerticalMatches();
+        bool bolHor = CheckHorizontalMatches();
+
+        if (bolVer || bolHor)
+            return true;
+        else
+            return false;
     }
 
-    //检测水平方向有无消除
+    //检测水平方向有无可消除
     private bool CheckHorizontalMatches()
     {
+        Debug.Log("检测水平！");
+        bool result = false;
+
         for (int rowIndex = rowNum - 1; rowIndex >= 0; rowIndex--)
         {
             for (int columnIndex = 0; columnIndex < columnNum - 2; columnIndex++)
             {
+                result = true;
                 if (GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex, columnIndex + 1).typeName &&
                     GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex, columnIndex + 2).typeName)
                 {
@@ -195,16 +207,20 @@ public class GameController : MonoBehaviour
             }
         }
 
-        return false;
+        return result;
     }
 
-    //检测垂直方向有无消除
+    //检测垂直方向有无可消除
     private bool CheckVerticalMatches()
     {
+        Debug.Log("检测垂直！");
+        bool result = false;
+
         for (int columnIndex = columnNum - 1; columnIndex >= 0; columnIndex--)
         {
             for (int rowIndex = 0; rowIndex < rowNum - 2; rowIndex++)
             {
+                result = true;
                 if (GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex + 1, columnIndex).typeName &&
                     GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex + 2, columnIndex).typeName)
                 {
@@ -215,9 +231,9 @@ public class GameController : MonoBehaviour
                 }
             }
         }
-            
 
-            return false;
+
+        return result;
     }
 
 
@@ -234,6 +250,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 消除匹配的Candy
+    /// </summary>
     private void RemoveMatches()
     {
         Candy tmpCandy;
@@ -246,27 +265,29 @@ public class GameController : MonoBehaviour
             }
 
             matchCandys = new ArrayList();
-        }
 
+            //if (CheckMatches())
+            //    RemoveMatches();
+        }
     }
 
 
     //=================================================================================================
-    public string LoadJsonData(string fileName, string firstIndexName, int strNo, string keyName)
-    {
-        JsonData json;
-        string valuePair;
-        json = LoadJsonData(fileName);
-        valuePair = (string)json[firstIndexName][strNo][keyName];
+    //public string LoadJsonData(string fileName, string firstIndexName, int strNo, string keyName)
+    //{
+    //    JsonData json;
+    //    string valuePair;
+    //    json = LoadJsonData(fileName);
+    //    valuePair = (string)json[firstIndexName][strNo][keyName];
 
-        return valuePair;
-    }
+    //    return valuePair;
+    //}
 
-    JsonData LoadJsonData(string fileName)
-    {
-        string filePath = Application.dataPath + "/Json/JsonText/RoadExpand/" + fileName + ".txt";     //Json路径
-        string jsonStr = File.ReadAllText(filePath);
-        JsonData jd = JsonMapper.ToObject(jsonStr);
-        return jd;
-    }
+    //JsonData LoadJsonData(string fileName)
+    //{
+    //    string filePath = Application.dataPath + "/Json/JsonText/RoadExpand/" + fileName + ".txt";     //Json路径
+    //    string jsonStr = File.ReadAllText(filePath);
+    //    JsonData jd = JsonMapper.ToObject(jsonStr);
+    //    return jd;
+    //}
 }
