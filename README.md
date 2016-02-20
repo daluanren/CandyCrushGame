@@ -26,7 +26,8 @@
 5. ** Candy补充算法 **:需要建立逻辑二维数组,数组的增减与实际的销毁相对应;
 6. Candy缓动功能：使用itween.Moveto实现；
 7. 消除Candy：Candy的消除条件检测、Candy的消除；
-8. ** Candy相邻互换 **:特点条件：同行，列索引差的绝对值为1；同列，行索引差的绝对值为1；(Mathf.Abs(c1.rowIndex - c2.rowIndex) + Mathf.Abs(c1.rowIndex - c2.rowIndex) == 1。
+8. ** Candy相邻互换 **:特点条件：同行，列索引差的绝对值为1；同列，行索引差的绝对值为1；(Mathf.Abs(c1.rowIndex - c2.rowIndex) + Mathf.Abs(c1.rowIndex - c2.rowIndex) == 1;
+9. 交换效果：使用到协同，交换的时候产生效果，可以使用Candy缓动功能；
 5. ...（后期继续补充）
 
 ### 代码结构： ###
@@ -45,6 +46,20 @@
 		<td>GameController</td>
 		<td>
 			游戏流程和功能控制，主要包括：确定行列数、生成Candy、...（后期补充）
+		</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SceneManager</td>
+		<td>
+			控制场景的切换
+		</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>StartPageController</td>
+		<td>
+			开始界面的控制，主要是对按钮的功能控制
 		</td>
 		<td></td>
 	</tr>

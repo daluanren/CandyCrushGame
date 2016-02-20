@@ -140,8 +140,8 @@ public class GameController : MonoBehaviour
         c1.columnIndex = c2.columnIndex;
         c2.columnIndex = columnIndex;
         //Update c1,c2 position
-        c1.UpdatePosition();
-        c2.UpdatePosition();
+        c1.TweenPosition(followSpeed);
+        c2.TweenPosition(followSpeed);
 
 
     }
@@ -266,13 +266,12 @@ public class GameController : MonoBehaviour
 
             matchCandys = new ArrayList();
 
-            //if (CheckMatches())
-            //    RemoveMatches();
+            
         }
     }
 
 
-    //=================================================================================================
+    //=========================================后期，通过Json配置糖果信息========================================================
     //public string LoadJsonData(string fileName, string firstIndexName, int strNo, string keyName)
     //{
     //    JsonData json;
