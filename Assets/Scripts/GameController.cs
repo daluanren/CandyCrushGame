@@ -113,8 +113,16 @@ public class GameController : MonoBehaviour
             if (Mathf.Abs(crtCandy.rowIndex - c.rowIndex) + Mathf.Abs(crtCandy.columnIndex - c.columnIndex) == 1)
             {
                 Exchange(crtCandy, c);
+                Debug.Log("!!!check matches:" + CheckMatches());
                 if (CheckMatches())
+                {
                     RemoveMatches();
+                }
+                else
+                {
+                    Exchange(crtCandy, c);
+                    //互相换回来
+                }
             }
 
             crtCandy = null;
@@ -195,10 +203,10 @@ public class GameController : MonoBehaviour
         {
             for (int columnIndex = 0; columnIndex < columnNum - 2; columnIndex++)
             {
-                result = true;
                 if (GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex, columnIndex + 1).typeName &&
                     GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex, columnIndex + 2).typeName)
                 {
+                    result = true;
                     Debug.Log(rowIndex + " " + columnIndex + " " + columnIndex + 1 + " " + columnIndex + 2);
                     AddMatches(GetCandy(rowIndex, columnIndex));
                     AddMatches(GetCandy(rowIndex, columnIndex + 1));
@@ -220,10 +228,10 @@ public class GameController : MonoBehaviour
         {
             for (int rowIndex = 0; rowIndex < rowNum - 2; rowIndex++)
             {
-                result = true;
                 if (GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex + 1, columnIndex).typeName &&
                     GetCandy(rowIndex, columnIndex).typeName == GetCandy(rowIndex + 2, columnIndex).typeName)
                 {
+                    result = true;
                     Debug.Log(rowIndex + " " + columnIndex + " " + columnIndex + 1 + " " + columnIndex + 2);
                     AddMatches(GetCandy(rowIndex, columnIndex));
                     AddMatches(GetCandy(rowIndex + 1, columnIndex));

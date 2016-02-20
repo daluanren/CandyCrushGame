@@ -1,0 +1,13 @@
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\Assembly-CSharp.dll
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\LitJson.dll
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\UnityEditor.dll
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\UnityEngine.dll
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\UnityEngine.UI.dll
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\Mono.Cecil.dll
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\nunit.framework.dll
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\Unity.DataContract.dll
+D:\GitHubProjects\CandyCrushGame\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\GitHubProjects\CandyCrushGame\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+D:\GitHubProjects\CandyCrushGame\obj\Debug\Assembly-CSharp.dll
+D:\GitHubProjects\CandyCrushGame\obj\Debug\Assembly-CSharp.pdb
