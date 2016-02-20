@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public Candy candy;
     public Transform panel_candys;
     public float followSpeed = 0.5f;
+    public float exchangeSpeed = 0.3f;
 
     private ArrayList candyArr; //存放CandyArray的数组，二维数组
 
@@ -94,25 +95,38 @@ public class GameController : MonoBehaviour
         tmpArr[columnIndex] = c;
     }
 
-    private Candy crtCandy = null;     //标记Candy
+    
     /// <summary>
     /// 选择Candy
     /// </summary>
     /// <param name="c">选中的Candy</param>
     public void Select(Candy c)
     {
+        StartCoroutine(SelectCoro(c));
+    }
+
+    private Candy crtCandy = null;     //标记Candy
+    //协成，选择Candy
+    public IEnumerator SelectCoro(Candy c)
+    {
         //Remove(c); return;
 
         if (crtCandy == null)
         {
             crtCandy = c;
+            crtCandy.GetComponent<TweenScale>().enabled = true;
+            yield return null;
         }
         else
         {
+            crtCandy.GetComponent<TweenScale>().enabled = false;
+            crtCandy.transform.localScale = Vector3.one;
+
             Debug.Log("fist candy position:" + crtCandy.rowIndex + "," + crtCandy.columnIndex + "...second candy position:" + c.rowIndex + "," + c.columnIndex);
             if (Mathf.Abs(crtCandy.rowIndex - c.rowIndex) + Mathf.Abs(crtCandy.columnIndex - c.columnIndex) == 1)
             {
                 Exchange(crtCandy, c);
+                yield return new WaitForSeconds(exchangeSpeed);
                 Debug.Log("!!!check matches:" + CheckMatches());
                 if (CheckMatches())
                 {
@@ -120,13 +134,15 @@ public class GameController : MonoBehaviour
                 }
                 else
                 {
-                    Exchange(crtCandy, c);
                     //互相换回来
+                    Exchange(crtCandy, c);
+                    yield return new WaitForSeconds(exchangeSpeed);
                 }
             }
 
             crtCandy = null;
         }
+        StopCoroutine("SelectCoro");
     }
 
     /// <summary>
@@ -150,7 +166,7 @@ public class GameController : MonoBehaviour
         //Update c1,c2 position
         c1.TweenPosition(followSpeed);
         c2.TweenPosition(followSpeed);
-
+        
 
     }
 
@@ -273,9 +289,9 @@ public class GameController : MonoBehaviour
             }
 
             matchCandys = new ArrayList();
-
-            
         }
+        if (CheckMatches())
+            RemoveMatches();
     }
 
 

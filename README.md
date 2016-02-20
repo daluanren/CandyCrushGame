@@ -27,7 +27,8 @@
 6. Candy缓动功能：使用itween.Moveto实现；
 7. 消除Candy：Candy的消除条件检测、Candy的消除；
 8. ** Candy相邻互换 **:特点条件：同行，列索引差的绝对值为1；同列，行索引差的绝对值为1；(Mathf.Abs(c1.rowIndex - c2.rowIndex) + Mathf.Abs(c1.rowIndex - c2.rowIndex) == 1;
-9. 交换效果：使用到协同，交换的时候产生效果，可以使用Candy缓动功能；
+9. 交换效果：使用到协同程序，交换的时候产生效果，可以使用Candy缓动功能；
+10. 选中效果：使用Animation;
 5. ...（后期继续补充）
 
 ### 代码结构： ###
