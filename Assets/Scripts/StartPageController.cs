@@ -13,7 +13,7 @@ public class StartPageController : MonoBehaviour
     void Awake()
     {
         uiCame = GameObject.Find("UI Root/Camera").transform;
-        panel_center = uiCame.FindChild("Anchor_center/Panel_center");
+        panel_center = uiCame.FindChild("UI_main/Anchor_center/Panel_center");
         btn_start = panel_center.FindChild("Btn_start");
         btn_exit = panel_center.FindChild("Btn_exit");
 
@@ -52,5 +52,40 @@ public class StartPageController : MonoBehaviour
     {
         Debug.Log("Exit!");
         Application.Quit();
+    }
+
+    bool isSetShow = false;
+    Vector3 oldPos = new Vector3(80f, -170f, 0);
+    Vector3 newPos = new Vector3(202f, -170f, 0);
+
+    public void ClickSetBtn(GameObject btn,GameObject panel)
+    {
+        if (isSetShow)
+        {
+            iTween.MoveTo(btn, iTween.Hash
+                   (
+                       "position", oldPos,
+                       "time", 0.5f,
+                       "islocal", true
+                   )
+               );
+            isSetShow = false;
+            panel.SetActive(false);
+
+        }
+        else
+        {
+            iTween.MoveTo(btn, iTween.Hash
+                   (
+                       "position", newPos,
+                       "time", 0.5f,
+                       "islocal", true
+                   )
+               );
+            isSetShow = true;
+            panel.SetActive(true);
+
+        }
+
     }
 }

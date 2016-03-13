@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{6052AA0B-2BDF-CAC0-1DDA-EAA25F52E661}") = "CandyCrushGame", "Assembly-CSharp-firstpass.csproj", "{CC4BFA66-5340-B1F2-AFC9-1CBF08CB0A74}"
+EndProject
 Project("{6052AA0B-2BDF-CAC0-1DDA-EAA25F52E661}") = "CandyCrushGame", "Assembly-CSharp.csproj", "{774DAEE2-21F2-B56B-24CC-9752B5CE2E84}"
 EndProject
 Project("{6052AA0B-2BDF-CAC0-1DDA-EAA25F52E661}") = "CandyCrushGame", "Assembly-CSharp-Editor.csproj", "{7639F1A3-D6FB-7FE0-58A2-55FD156573CA}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC4BFA66-5340-B1F2-AFC9-1CBF08CB0A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4BFA66-5340-B1F2-AFC9-1CBF08CB0A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4BFA66-5340-B1F2-AFC9-1CBF08CB0A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4BFA66-5340-B1F2-AFC9-1CBF08CB0A74}.Release|Any CPU.Build.0 = Release|Any CPU
 		{774DAEE2-21F2-B56B-24CC-9752B5CE2E84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{774DAEE2-21F2-B56B-24CC-9752B5CE2E84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{774DAEE2-21F2-B56B-24CC-9752B5CE2E84}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -23,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																												GlobalSection(MonoDevelopProperties) = preSolution
+																																			GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
