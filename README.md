@@ -64,6 +64,13 @@
 		</td>
 		<td></td>
 	</tr>
+	<tr>
+		<td>UI_setManager</td>
+		<td>
+			控制主界面设置按钮
+		</td>
+		<td></td>
+	</tr>
 </table>
 
 ### 问题记录： ###
